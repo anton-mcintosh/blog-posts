@@ -1,0 +1,32 @@
+name: Publish Blog Posts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Blog/published/*.md'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      -name: Checkout code
+      uses: actions/checkout@v3
+
+      -name: Send Markdown posts to API
+      env:
+        API_URL: https://idleworkshop.com/blog/posts
+        API_TOKEN: "testkey123"
+      run: |
+        for file in Blog/published/*.md; do
+          TITLE=$(basename "$file" .md)
+          CONTENT=$(cat "$file" | jq -Rs .)
+          echo "Publishing $TITLE"
+          
+          curl -X POST "$API_URL" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $API_TOKEN" \
+            -d '{"title": "'"$TITLE"'", "content": '"#CONTENT"'}'
+        done
