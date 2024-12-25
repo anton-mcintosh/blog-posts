@@ -1,9 +1,11 @@
+name: Publish Blog Posts
+
 on:
   push:
     branches:
       - main
     paths:
-      - 'published/*.md'
+      - 'Blog/published/*.md'  # Trigger only when Markdown files are added or updated.
 
 jobs:
   publish:
@@ -15,13 +17,12 @@ jobs:
 
       - name: Send Markdown posts to API
         env:
-          API_URL: https://idleworkshop.com/blog/posts
-          API_TOKEN: "testkey123"
-
+          API_URL: https://idleworkshop.com/api/posts  # Replace with your actual API URL
+          API_TOKEN: ${{ secrets.BLOG_API_TOKEN }} # Auth token (set this in GitHub Secrets)
         run: |
           for file in Blog/published/*.md; do
             TITLE=$(basename "$file" .md)
-            CONTENT=$(cat "$file" | jq -Rs .)
+            CONTENT=$(cat "$file" | jq -Rs .)  # Read file content safely
             echo "Publishing $TITLE"
 
             curl -X POST "$API_URL" \
@@ -29,4 +30,3 @@ jobs:
               -H "Authorization: Bearer $API_TOKEN" \
               -d '{"title": "'"$TITLE"'", "content": '"$CONTENT"'}'
           done
-
