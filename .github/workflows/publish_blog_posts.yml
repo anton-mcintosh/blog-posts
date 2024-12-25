@@ -17,6 +17,7 @@ jobs:
         env:
           API_URL: https://idleworkshop.com/blog/posts
           API_TOKEN: "testkey123"
+
         run: |
           for file in Blog/published/*.md; do
             TITLE=$(basename "$file" .md)
