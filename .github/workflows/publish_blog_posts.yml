@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'published/*.md'  # Trigger only when Markdown files are added or updated.
+      - '*.md'  # Trigger only when Markdown files are added or updated.
 
 jobs:
   publish:
