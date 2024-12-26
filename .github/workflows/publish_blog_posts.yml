@@ -27,6 +27,6 @@ jobs:
 
             curl -X POST "$API_URL" \
               -H "Content-Type: application/json" \
-              -H "Authorization: Bearer $API_TOKEN" \
+              -H "Authorization: $API_TOKEN" \
               -d '{"title": "'"$TITLE"'", "content": '"$CONTENT"'}'
           done
