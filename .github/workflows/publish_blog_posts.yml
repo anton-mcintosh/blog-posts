@@ -1,32 +1,39 @@
 name: Publish Blog Posts
-
 on:
   push:
     branches:
       - main
     paths:
-      - '*.md'  # Trigger only when Markdown files are added or updated.
+      - '*.md'  # This is correct since files are in root
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Send Markdown posts to API
         env:
-          API_URL: https://idleworkshop.com/api/posts  # Replace with your actual API URL
-          API_TOKEN: ${{ secrets.BLOG_API_TOKEN }} # Auth token (set this in GitHub Secrets)
+          API_URL: https://idleworkshop.com/api/posts
+          API_TOKEN: ${{ secrets.BLOG_API_TOKEN }}
         run: |
+          # Add debug output for current directory
+          echo "Current directory: $(pwd)"
+          echo "Files in directory:"
+          ls -la *.md || echo "No .md files found"
+          
           for file in *.md; do
-            TITLE=$(basename "$file" .md)
-            CONTENT=$(cat "$file" | jq -Rs .)  # Read file content safely
-            echo "Publishing $TITLE"
-
-            curl -X POST "$API_URL" \
-              -H "Content-Type: application/json" \
-              -H "Authorization: $API_TOKEN" \
-              -d '{"title": "'"$TITLE"'", "content": '"$CONTENT"'}'
+            if [ -f "$file" ]; then
+              TITLE=$(basename "$file" .md)
+              CONTENT=$(cat "$file" | jq -Rs .)
+              echo "Processing file: $file"
+              echo "Title: $TITLE"
+              echo "Content length: $(wc -c < "$file") bytes"
+              
+              curl -X POST "$API_URL" \
+                -H "Content-Type: application/json" \
+                -H "Authorization: $API_TOKEN" \
+                -d '{"title": "'"$TITLE"'", "content": '"$CONTENT"'}' \
+                -v
+            fi
           done
