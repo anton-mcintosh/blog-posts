@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - '*.md'  # This is correct since files are in root
+      - '*.md'
 
 jobs:
   publish:
@@ -17,7 +17,6 @@ jobs:
           API_URL: https://idleworkshop.com/api/posts
           API_TOKEN: ${{ secrets.BLOG_API_TOKEN }}
         run: |
-          # Add debug output for current directory
           echo "Current directory: $(pwd)"
           echo "Files in directory:"
           ls -la *.md || echo "No .md files found"
@@ -25,15 +24,37 @@ jobs:
           for file in *.md; do
             if [ -f "$file" ]; then
               TITLE=$(basename "$file" .md)
+              # Format content as JSON string properly
               CONTENT=$(cat "$file" | jq -Rs .)
+              
+              # Debug the actual payload
+              PAYLOAD=$(jq -n \
+                --arg title "$TITLE" \
+                --arg content "$CONTENT" \
+                '{"title": $title, "content": $content}')
+              
               echo "Processing file: $file"
               echo "Title: $TITLE"
-              echo "Content length: $(wc -c < "$file") bytes"
+              echo "Payload preview (first 100 chars):"
+              echo "$PAYLOAD" | head -c 100
               
-              curl -X POST "$API_URL" \
+              # Send request and capture response
+              RESPONSE=$(curl -X POST "$API_URL" \
                 -H "Content-Type: application/json" \
                 -H "Authorization: $API_TOKEN" \
-                -d '{"title": "'"$TITLE"'", "content": '"$CONTENT"'}' \
-                -v
+                -d "$PAYLOAD" \
+                -w "\nHTTP_STATUS:%{http_code}" \
+                -s)
+              
+              HTTP_STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS" | cut -d":" -f2)
+              RESPONSE_BODY=$(echo "$RESPONSE" | sed '$d')
+              
+              echo "Status code: $HTTP_STATUS"
+              echo "Response body: $RESPONSE_BODY"
+              
+              if [ "$HTTP_STATUS" != "201" ]; then
+                echo "Error publishing $TITLE"
+                exit 1
+              fi
             fi
           done
