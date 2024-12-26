@@ -20,7 +20,7 @@ jobs:
           API_URL: https://idleworkshop.com/api/posts  # Replace with your actual API URL
           API_TOKEN: ${{ secrets.BLOG_API_TOKEN }} # Auth token (set this in GitHub Secrets)
         run: |
-          for file in *.md; do
+          for file in ./*.md; do
             TITLE=$(basename "$file" .md)
             CONTENT=$(cat "$file" | jq -Rs .)  # Read file content safely
             echo "Publishing $TITLE"
