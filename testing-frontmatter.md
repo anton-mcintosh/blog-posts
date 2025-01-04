@@ -1,6 +1,5 @@
 ---
 title: Testing Frontmatter
-date: 
 tags:
 	- markdown
 	- webdev
