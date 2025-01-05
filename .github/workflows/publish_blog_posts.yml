@@ -33,7 +33,7 @@ jobs:
               curl -X POST "$API_URL" \
                 -H "Content-Type: application/json" \
                 -H "Authorization: $API_TOKEN" \
-          -d '{"markdown": '"$CONTENT"'}' \
+          -d '{"file": '"$TITLE"', "markdown": '"$CONTENT"'}' \
                 -v
             fi
           done
