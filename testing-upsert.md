@@ -13,7 +13,7 @@ Here is where a summary will live. This is just going to be one or two paragraph
 
 There might be multiple paragraphs in the summary. At this point, i'm not 100% sure how I want to differentiate the summary from the rest of the article. The challenge is that I need a reliable queue to parse to in the backend code. For now, I suppose i'll just use a series of characters as a line to separate the summary from the rest of the post.
 
----
+<!-- summary -->
 # Testing Upsert Functionality.
 
 Status: It works!
