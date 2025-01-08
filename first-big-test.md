@@ -31,6 +31,7 @@ And here is an *ordered*  list:
 3. works
 
 An image:
+
 ![alt text](images/futurama.jpeg)
 
 I think that should do it for the test. This covers most of what i think I may want to include in blog posts. If all this works correctly, then it's likely that the rest of the markdown stuff I might want to use will also work.
