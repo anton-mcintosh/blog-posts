@@ -5,7 +5,7 @@ tags:
   - webdev
   - test
 nutshell: This is my first blog post which will stay. But it's really just a test.
-topic: Testing
+topic: Testing Markdown
 readtime: 3 min read
 ---
 Well, the time has come. I think I've got everything working for my semi-automated blog pipeline. This post serves as a comprehensive test of the pipeline's functionality. If everything goes to plan, i'll follow this post up with an overview of my blog pipeline. Since I built it from scratch, I feel it's worth sharing. 
@@ -34,5 +34,7 @@ An image:
 ![alt text](images/futurama.jpeg)
 
 I think that should do it for the test. This covers most of what i think I may want to include in blog posts. If all this works correctly, then it's likely that the rest of the markdown stuff I might want to use will also work.
+
+I might want to add links so: [The Devil's Workshop](http://idleworkshop.com)
 
 Here we go!!
