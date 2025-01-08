@@ -6,7 +6,7 @@ tags:
   - test
 nutshell: This is my first blog post which will stay. But it's really just a test.
 topic: Testing
-readtime: 5 min read
+readtime: 3 min read
 ---
 Well, the time has come. I think I've got everything working for my semi-automated blog pipeline. This post serves as a comprehensive test of the pipeline's functionality. If everything goes to plan, i'll follow this post up with an overview of my blog pipeline. Since I built it from scratch, I feel it's worth sharing. 
 
