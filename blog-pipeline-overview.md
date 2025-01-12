@@ -187,8 +187,10 @@ Each preview consists of:
 To get these 6 elements sorted out, I have to back it up to the start where I write the post itself. 
 
 Even though the metadata is in the middle of the post preview sandwich, that's where the post begins. At the start of each post, there is a section for metadata called "frontmatter". The frontmatter is housed between two sets of triple dashes. 
+
 Here is how it looks:
-``` md
+
+```md
 ---
 title: Blog Format Template
 tags:
