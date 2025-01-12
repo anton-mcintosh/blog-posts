@@ -9,7 +9,7 @@ tags:
   - javascript
 nutshell: Blog built from scratch. Read to learn how it works.
 topic: Tech
-readtime: 10 minutes
+readtime: 12 min read
 ---
 One of my goals for 2025 is to write more. Ideally I'd like to be writing something every day. Having a blog sounded like something that would give me some accountability to write thoughtfully since other people will (maybe) read it. Yes, I'm being quite presumptive to assume that someone might want to read what I write in a format that has seemingly fallen out of favor. 
 
