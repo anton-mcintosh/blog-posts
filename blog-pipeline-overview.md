@@ -39,7 +39,7 @@ The experienced reader might wonder why I didn't decide to use Node or Python fo
 
 Also, to be honest, i'm not a big fan of Python. The main languages I learned while getting my CS degree were Java and C. After writing so much code in those languages, my experience having to build a project in Python was frustrating and I never fully recovered from it. Go strikes a nice balance  between the C world and the Python world. Go is statically typed, pretty fast and has a syntax closer to my comfort zone. The main downside of using Go would end up being the fact that it just isn't as widely adopted (yet) as Python so finding solutions to problems, or examples of how things are done, was a bit more challenging.
 
-![backend flow](../published/images/backend_flow.png)
+![backend flow](http://idleworkshop.com/images/backend_flow.png)
 The basic workflow goes like this:
 1. Write my blog post in Obsidian.
 2. Push the final post to the GitHub repo that is synced with my blog directory.
