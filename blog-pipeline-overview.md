@@ -77,9 +77,12 @@ jobs:
                 -d '{"file": "'"$TITLE"'", "markdown": '"$CONTENT"'}' \
                 -v
             fi
-          done ```
-4. The Go API then parses out the metadata and the content of the post.
-```Go
+          done 
+          ```
+          
+1. The Go API then parses out the metadata and the content of the post.
+
+```go
 func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
   // split the markdown into metadata and content
   log.Println(markdown)
@@ -108,9 +111,12 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
     Summary: summary,
     Content:  mainContent,
   }, nil
-}```
+}
+```
+
 5. Lastly, the Go API sends all parsed pieces to the MongoDB collection.
-```Go
+
+```go
 func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
   var markdownData struct {
     Markdown string `json:"markdown"`
@@ -159,7 +165,8 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
     c.JSON(http.StatusOK, gin.H{"message": "Post updated"})
       }
 
-} ```
+} 
+```
 
 ## The Frontend - HTML/CSS and Vanilla JavaScript
 
@@ -181,7 +188,7 @@ To get these 6 elements sorted out, I have to back it up to the start where I wr
 
 Even though the metadata is in the middle of the post preview sandwich, that's where the post begins. At the start of each post, there is a section for metadata called "frontmatter". The frontmatter is housed between two sets of triple dashes. 
 Here is how it looks:
-``` Markdown
+``` md
 ---
 title: Blog Format Template
 tags:
@@ -199,7 +206,7 @@ readtime: 10 minutes
 The next element that is important to the preview is the summary. I didn't want to encapsulate this whole part in the frontmatter, though I certainly could have. For my purposes, the summary felt more like part of the post itself; an introduction if you will. So to make parsing this section easy I add a delimiter to the end of it. 
 
 Everything after the frontmatter looks like this:
-```
+```md
 Here is where a summary will live. This is just going to be one or two paragraphs that lead the reader into the article. This is also what will display in the preview of the blog post on the main blogs page.
 
 There might be multiple paragraphs in the summary. At this point, i'm not 100% sure how I want to differentiate the summary from the rest of the article. The challenge is that I need a reliable queue to parse to in the backend code. For now, I suppose i'll just use a series of characters as a line to separate the summary from the rest of the post.
@@ -213,7 +220,7 @@ Here is where the main content of the article (blog post) will reside. This can 
 The tricky bit of rendering the Markdown neatly on the page is handled by [md-block](https://md-block.verou.me/#recipes). Md-block handles almost all the heavy lifting of converting my markdown files into HTML. Also, I love that the author created md-block mostly for fun, but also to meet his own needs instead of using something off the shelf. I have big respect for doing things the hard way.
 
 Whether for the summary or the actual blog post, I put them in their own div and added that to the corresponding class. For example, here is a segment of my JavaScript code from the displayPost function:
-``` JavaScript
+```js
 function displayPost(post) {
   const blogPost = document.createElement("div");
   blogPost.classList.add("blog-post");
@@ -229,7 +236,7 @@ function displayPost(post) {
   ```
 
 By appending the md-block formatted contentElement to the postContainer, i'm able to access individual elements within the post for CSS formatting. For example:
-``` CSS
+```css
 .blog-post {
   width: 60%;
   /* Properties removed for brevity */
