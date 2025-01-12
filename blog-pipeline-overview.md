@@ -118,9 +118,9 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
 
 ```go
 func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
-  var markdownData struct {
-    Markdown string `json:"markdown"`
-    File string `json:"file"`
+	var markdownData struct {
+	  Markdown string `json:"markdown"`
+	  File string `json:"file"`
   }
   if err := c.ShouldBindJSON(&markdownData); err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
