@@ -78,9 +78,9 @@ jobs:
                 -v
             fi
           done 
-          ```
-          
-1. The Go API then parses out the metadata and the content of the post.
+```
+
+4. The Go API then parses out the metadata and the content of the post.
 
 ```go
 func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
