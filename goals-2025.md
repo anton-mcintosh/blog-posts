@@ -73,3 +73,10 @@ At this point i'll decide if I want to keep going on this app or start something
 
 ## Goal 5: Write every day
 A daily journal plus my weekly blog post should make this one a slam dunk. This one is simple. Though I believe it'll be fulfilling. Not all goals have to be difficult.
+
+## So that's it
+These aren't my only goals for the year, but when i'm having a conversation with someone and they ask me what my goals are for the year, these are my go to. I'll post a sit-rep around the end of each quarter to see how things are progressing. I believe these goals are all perfectly achievable if I stay on top of myself and keep busy. The SMART aspect of these goals are what make them actual **goals** and not **wants**. My list of wants is a mile long, and I rarely make progress on any of them. Using the SMART framework to give my goals some teeth should help me get where I want to be.
+
+So what are your goals for 2025? Shoot me an email at anton@idleworkshop.com and let me know your plan. I'd love to hear about it.
+
+Here's to a great, productive year!
